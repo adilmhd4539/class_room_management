@@ -33,7 +33,11 @@ class StudentNetworkDataSourceImpl extends BaseDataSource
     try {
       http.Response response =
           await api.get(url: '${EnvConfig.studentsEndPoint}/$id');
-      return StudentModel.fromJson(jsonDecode(response.body));
+      if (response.statusCode == 200) {
+        return StudentModel.fromJson(jsonDecode(response.body));
+      } else {
+        throw UnknownFailure(message: response.reasonPhrase);
+      }
     } catch (e) {
       rethrow;
     }

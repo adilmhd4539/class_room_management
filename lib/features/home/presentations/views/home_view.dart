@@ -47,7 +47,9 @@ class _HomeViewState extends State<HomeView> {
                         height: 40,
                       ),
                       _buildListTile(
-                          title: 'Subjetcs', bgColor: AppColors.lightBlue),
+                          onTap: _handleOnSubjectTap,
+                          title: 'Subjetcs',
+                          bgColor: AppColors.lightBlue),
                       const SizedBox(
                         height: 40,
                       ),
@@ -99,6 +101,7 @@ class _HomeViewState extends State<HomeView> {
             assetPath: AssetConstants.studentIcon,
             bgColor: AppColors.lightGreen),
         _buildGridTile(
+            onTap: _handleOnSubjectTap,
             title: 'Subjetcs',
             assetPath: AssetConstants.subjectIcon,
             bgColor: AppColors.lightBlue),
@@ -144,5 +147,9 @@ class _HomeViewState extends State<HomeView> {
 
   void _handleOnStudentsTap() {
     context.router.push(const StudentsListRoute());
+  }
+
+  void _handleOnSubjectTap() {
+    context.router.push(const SubjectListingRoute());
   }
 }
