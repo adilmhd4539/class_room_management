@@ -20,4 +20,14 @@ class StudentRepositoryImpl implements StudentRepository {
       return Left(e is Failure ? e : UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, Student>> getSudent({required int id}) async {
+    try {
+      final response = await _dataSource.getStudent(id: id);
+      return Right(Student.fromModel(response));
+    } catch (e) {
+      return Left(e is Failure ? e : UnknownFailure());
+    }
+  }
 }

@@ -13,6 +13,7 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
   final StudentUsecase _usecase;
   StudentBloc(this._usecase) : super(const FetchingStudents()) {
     on<FetchSutudents>(_handleOnGetStudents);
+    on<FetchStudent>(_handleOnFetchStudent);
   }
 
   FutureOr<void> _handleOnGetStudents(
@@ -21,5 +22,13 @@ class StudentBloc extends Bloc<StudentEvent, StudentState> {
     final response = await _usecase.getStudents();
     response.fold((failure) => emit(FetchingStudentsFailed(failure)),
         (students) => emit(FetchingStudentsSuccess(students)));
+  }
+
+  FutureOr<void> _handleOnFetchStudent(
+      FetchStudent event, Emitter<StudentState> emit) async {
+    emit(const FetchingStudent());
+    final response = await _usecase.getStudent(id: event.id);
+    response.fold((failure) => emit(FetchingStudentFailed(failure)),
+        (student) => emit(FetchingStudentSuccess(student)));
   }
 }

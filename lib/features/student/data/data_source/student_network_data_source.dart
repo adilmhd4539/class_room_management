@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 abstract class StudentNetworkDataSource {
   Future<List<StudentModel>> getStudents();
+  Future<StudentModel> getStudent({required int id});
 }
 
 class StudentNetworkDataSourceImpl extends BaseDataSource
@@ -22,6 +23,17 @@ class StudentNetworkDataSourceImpl extends BaseDataSource
       } else {
         throw UnknownFailure(message: response.reasonPhrase);
       }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<StudentModel> getStudent({required int id}) async {
+    try {
+      http.Response response =
+          await api.get(url: '${EnvConfig.studentsEndPoint}/$id');
+      return StudentModel.fromJson(jsonDecode(response.body));
     } catch (e) {
       rethrow;
     }

@@ -4,4 +4,5 @@ import 'package:dartz/dartz.dart';
 
 abstract class StudentRepository {
   Future<Either<Failure, List<Student>>> getStudents();
+  Future<Either<Failure, Student>> getSudent({required int id});
 }

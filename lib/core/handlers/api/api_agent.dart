@@ -13,10 +13,11 @@ class ApiAgent {
     required String url,
     Map<String, String>? headers,
   }) async {
-    url = "$url/?api_key=$apiKey";
+    Uri uri = Uri.parse(url);
+    uri = uri.replace(queryParameters: {"api_key": apiKey});
     try {
       headers = headers ?? {'Content-Type': 'application/json'};
-      return http.get(Uri.parse(url), headers: headers);
+      return http.get(uri, headers: headers);
     } on TimeoutException {
       throw TimeOutFailure();
     } on SocketException {

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
 import 'package:class_room_mangement/features/student/domain/entities/student_entity.dart';
 import 'package:class_room_mangement/resources/app_colors.dart';
 import 'package:class_room_mangement/resources/extensions/app_extensions.dart';
@@ -36,7 +37,12 @@ class _StudentsListViewState extends State<StudentsListView> {
           const SizedBox(
             height: 10,
           ),
-          Expanded(child: BlocBuilder<StudentBloc, StudentState>(
+          Expanded(
+              child: BlocBuilder<StudentBloc, StudentState>(
+            buildWhen: (previous, current) =>
+                current is FetchingStudents ||
+                current is FetchingStudentsFailed ||
+                current is FetchingStudentsSuccess,
             builder: (context, state) {
               return state.maybeWhen(
                   orElse: () => const SizedBox(),
@@ -62,36 +68,44 @@ class _StudentsListViewState extends State<StudentsListView> {
     );
   }
 
-  Container _buildStudentTile({required Student student}) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
-        decoration: BoxDecoration(
-            color: AppColors.primary, borderRadius: BorderRadius.circular(10)),
-        child: Row(
-          children: [
-            Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  student.name,
-                  style: context.textTheme.labelSmall,
-                ),
-                Text(
-                  student.email,
-                  style: context.textTheme.bodyMedium,
-                )
-              ],
-            )),
-            const SizedBox(
-              width: 10,
-            ),
-            Text('Age : ${student.age}', style: context.textTheme.labelSmall)
-          ],
+  Widget _buildStudentTile({required Student student}) => InkWell(
+        onTap: () => _handleOnStudentTap(id: student.id),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
+          decoration: BoxDecoration(
+              color: AppColors.primary,
+              borderRadius: BorderRadius.circular(10)),
+          child: Row(
+            children: [
+              Expanded(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    student.name,
+                    style: context.textTheme.labelSmall,
+                  ),
+                  Text(
+                    student.email,
+                    style: context.textTheme.bodyMedium,
+                  )
+                ],
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Text('Age : ${student.age}', style: context.textTheme.labelSmall)
+            ],
+          ),
         ),
       );
 
   void _fetchStudents() {
     context.read<StudentBloc>().add(const FetchSutudents());
+  }
+
+  void _handleOnStudentTap({required int id}) {
+    context.router.push(StudentDetailRoute(id: id));
   }
 }

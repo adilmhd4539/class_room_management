@@ -19,32 +19,38 @@ mixin _$StudentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchStudents,
+    required TResult Function(int id) fetchStudent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchStudents,
+    TResult? Function(int id)? fetchStudent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchStudents,
+    TResult Function(int id)? fetchStudent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchSutudents value) fetchStudents,
+    required TResult Function(FetchStudent value) fetchStudent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchSutudents value)? fetchStudents,
+    TResult? Function(FetchStudent value)? fetchStudent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchSutudents value)? fetchStudents,
+    TResult Function(FetchStudent value)? fetchStudent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchStudents,
+    required TResult Function(int id) fetchStudent,
   }) {
     return fetchStudents();
   }
@@ -115,6 +122,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchStudents,
+    TResult? Function(int id)? fetchStudent,
   }) {
     return fetchStudents?.call();
   }
@@ -123,6 +131,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchStudents,
+    TResult Function(int id)? fetchStudent,
     required TResult orElse(),
   }) {
     if (fetchStudents != null) {
@@ -135,6 +144,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchSutudents value) fetchStudents,
+    required TResult Function(FetchStudent value) fetchStudent,
   }) {
     return fetchStudents(this);
   }
@@ -143,6 +153,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchSutudents value)? fetchStudents,
+    TResult? Function(FetchStudent value)? fetchStudent,
   }) {
     return fetchStudents?.call(this);
   }
@@ -151,6 +162,7 @@ class _$FetchSutudentsImpl implements FetchSutudents {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchSutudents value)? fetchStudents,
+    TResult Function(FetchStudent value)? fetchStudent,
     required TResult orElse(),
   }) {
     if (fetchStudents != null) {
@@ -165,12 +177,148 @@ abstract class FetchSutudents implements StudentEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchStudentImplCopyWith<$Res> {
+  factory _$$FetchStudentImplCopyWith(
+          _$FetchStudentImpl value, $Res Function(_$FetchStudentImpl) then) =
+      __$$FetchStudentImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$FetchStudentImplCopyWithImpl<$Res>
+    extends _$StudentEventCopyWithImpl<$Res, _$FetchStudentImpl>
+    implements _$$FetchStudentImplCopyWith<$Res> {
+  __$$FetchStudentImplCopyWithImpl(
+      _$FetchStudentImpl _value, $Res Function(_$FetchStudentImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$FetchStudentImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchStudentImpl implements FetchStudent {
+  const _$FetchStudentImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'StudentEvent.fetchStudent(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchStudentImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchStudentImplCopyWith<_$FetchStudentImpl> get copyWith =>
+      __$$FetchStudentImplCopyWithImpl<_$FetchStudentImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchStudents,
+    required TResult Function(int id) fetchStudent,
+  }) {
+    return fetchStudent(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchStudents,
+    TResult? Function(int id)? fetchStudent,
+  }) {
+    return fetchStudent?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchStudents,
+    TResult Function(int id)? fetchStudent,
+    required TResult orElse(),
+  }) {
+    if (fetchStudent != null) {
+      return fetchStudent(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchSutudents value) fetchStudents,
+    required TResult Function(FetchStudent value) fetchStudent,
+  }) {
+    return fetchStudent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchSutudents value)? fetchStudents,
+    TResult? Function(FetchStudent value)? fetchStudent,
+  }) {
+    return fetchStudent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchSutudents value)? fetchStudents,
+    TResult Function(FetchStudent value)? fetchStudent,
+    required TResult orElse(),
+  }) {
+    if (fetchStudent != null) {
+      return fetchStudent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchStudent implements StudentEvent {
+  const factory FetchStudent({required final int id}) = _$FetchStudentImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$FetchStudentImplCopyWith<_$FetchStudentImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$StudentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchingStudents,
     required TResult Function(Failure failure) fetchingStudentsFailed,
     required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -178,6 +326,9 @@ mixin _$StudentState {
     TResult? Function()? fetchingStudents,
     TResult? Function(Failure failure)? fetchingStudentsFailed,
     TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -185,6 +336,9 @@ mixin _$StudentState {
     TResult Function()? fetchingStudents,
     TResult Function(Failure failure)? fetchingStudentsFailed,
     TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -195,6 +349,11 @@ mixin _$StudentState {
         fetchingStudentsFailed,
     required TResult Function(FetchingStudentsSuccess value)
         fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -202,6 +361,9 @@ mixin _$StudentState {
     TResult? Function(FetchingStudents value)? fetchingStudents,
     TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -209,6 +371,9 @@ mixin _$StudentState {
     TResult Function(FetchingStudents value)? fetchingStudents,
     TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -273,6 +438,9 @@ class _$FetchingStudentsImpl implements FetchingStudents {
     required TResult Function() fetchingStudents,
     required TResult Function(Failure failure) fetchingStudentsFailed,
     required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
   }) {
     return fetchingStudents();
   }
@@ -283,6 +451,9 @@ class _$FetchingStudentsImpl implements FetchingStudents {
     TResult? Function()? fetchingStudents,
     TResult? Function(Failure failure)? fetchingStudentsFailed,
     TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
   }) {
     return fetchingStudents?.call();
   }
@@ -293,6 +464,9 @@ class _$FetchingStudentsImpl implements FetchingStudents {
     TResult Function()? fetchingStudents,
     TResult Function(Failure failure)? fetchingStudentsFailed,
     TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudents != null) {
@@ -309,6 +483,11 @@ class _$FetchingStudentsImpl implements FetchingStudents {
         fetchingStudentsFailed,
     required TResult Function(FetchingStudentsSuccess value)
         fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
   }) {
     return fetchingStudents(this);
   }
@@ -319,6 +498,9 @@ class _$FetchingStudentsImpl implements FetchingStudents {
     TResult? Function(FetchingStudents value)? fetchingStudents,
     TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
   }) {
     return fetchingStudents?.call(this);
   }
@@ -329,6 +511,9 @@ class _$FetchingStudentsImpl implements FetchingStudents {
     TResult Function(FetchingStudents value)? fetchingStudents,
     TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudents != null) {
@@ -412,6 +597,9 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
     required TResult Function() fetchingStudents,
     required TResult Function(Failure failure) fetchingStudentsFailed,
     required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
   }) {
     return fetchingStudentsFailed(failure);
   }
@@ -422,6 +610,9 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
     TResult? Function()? fetchingStudents,
     TResult? Function(Failure failure)? fetchingStudentsFailed,
     TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
   }) {
     return fetchingStudentsFailed?.call(failure);
   }
@@ -432,6 +623,9 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
     TResult Function()? fetchingStudents,
     TResult Function(Failure failure)? fetchingStudentsFailed,
     TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudentsFailed != null) {
@@ -448,6 +642,11 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
         fetchingStudentsFailed,
     required TResult Function(FetchingStudentsSuccess value)
         fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
   }) {
     return fetchingStudentsFailed(this);
   }
@@ -458,6 +657,9 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
     TResult? Function(FetchingStudents value)? fetchingStudents,
     TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
   }) {
     return fetchingStudentsFailed?.call(this);
   }
@@ -468,6 +670,9 @@ class _$FetchingStudentsFailedImpl implements FetchingStudentsFailed {
     TResult Function(FetchingStudents value)? fetchingStudents,
     TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudentsFailed != null) {
@@ -564,6 +769,9 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
     required TResult Function() fetchingStudents,
     required TResult Function(Failure failure) fetchingStudentsFailed,
     required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
   }) {
     return fetchingStudentsSuccess(sutdents);
   }
@@ -574,6 +782,9 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
     TResult? Function()? fetchingStudents,
     TResult? Function(Failure failure)? fetchingStudentsFailed,
     TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
   }) {
     return fetchingStudentsSuccess?.call(sutdents);
   }
@@ -584,6 +795,9 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
     TResult Function()? fetchingStudents,
     TResult Function(Failure failure)? fetchingStudentsFailed,
     TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudentsSuccess != null) {
@@ -600,6 +814,11 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
         fetchingStudentsFailed,
     required TResult Function(FetchingStudentsSuccess value)
         fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
   }) {
     return fetchingStudentsSuccess(this);
   }
@@ -610,6 +829,9 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
     TResult? Function(FetchingStudents value)? fetchingStudents,
     TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
   }) {
     return fetchingStudentsSuccess?.call(this);
   }
@@ -620,6 +842,9 @@ class _$FetchingStudentsSuccessImpl implements FetchingStudentsSuccess {
     TResult Function(FetchingStudents value)? fetchingStudents,
     TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
     TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
     required TResult orElse(),
   }) {
     if (fetchingStudentsSuccess != null) {
@@ -636,5 +861,474 @@ abstract class FetchingStudentsSuccess implements StudentState {
   List<Student> get sutdents;
   @JsonKey(ignore: true)
   _$$FetchingStudentsSuccessImplCopyWith<_$FetchingStudentsSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchingStudentImplCopyWith<$Res> {
+  factory _$$FetchingStudentImplCopyWith(_$FetchingStudentImpl value,
+          $Res Function(_$FetchingStudentImpl) then) =
+      __$$FetchingStudentImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchingStudentImplCopyWithImpl<$Res>
+    extends _$StudentStateCopyWithImpl<$Res, _$FetchingStudentImpl>
+    implements _$$FetchingStudentImplCopyWith<$Res> {
+  __$$FetchingStudentImplCopyWithImpl(
+      _$FetchingStudentImpl _value, $Res Function(_$FetchingStudentImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchingStudentImpl implements FetchingStudent {
+  const _$FetchingStudentImpl();
+
+  @override
+  String toString() {
+    return 'StudentState.fetchingStudent()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchingStudentImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingStudents,
+    required TResult Function(Failure failure) fetchingStudentsFailed,
+    required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
+  }) {
+    return fetchingStudent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingStudents,
+    TResult? Function(Failure failure)? fetchingStudentsFailed,
+    TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingStudents,
+    TResult Function(Failure failure)? fetchingStudentsFailed,
+    TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudent != null) {
+      return fetchingStudent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingStudents value) fetchingStudents,
+    required TResult Function(FetchingStudentsFailed value)
+        fetchingStudentsFailed,
+    required TResult Function(FetchingStudentsSuccess value)
+        fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
+  }) {
+    return fetchingStudent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingStudents value)? fetchingStudents,
+    TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingStudents value)? fetchingStudents,
+    TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudent != null) {
+      return fetchingStudent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingStudent implements StudentState {
+  const factory FetchingStudent() = _$FetchingStudentImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchingStudentFailedImplCopyWith<$Res> {
+  factory _$$FetchingStudentFailedImplCopyWith(
+          _$FetchingStudentFailedImpl value,
+          $Res Function(_$FetchingStudentFailedImpl) then) =
+      __$$FetchingStudentFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$FetchingStudentFailedImplCopyWithImpl<$Res>
+    extends _$StudentStateCopyWithImpl<$Res, _$FetchingStudentFailedImpl>
+    implements _$$FetchingStudentFailedImplCopyWith<$Res> {
+  __$$FetchingStudentFailedImplCopyWithImpl(_$FetchingStudentFailedImpl _value,
+      $Res Function(_$FetchingStudentFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FetchingStudentFailedImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchingStudentFailedImpl implements FetchingStudentFailed {
+  const _$FetchingStudentFailedImpl(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'StudentState.fetchingStudentFailed(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchingStudentFailedImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchingStudentFailedImplCopyWith<_$FetchingStudentFailedImpl>
+      get copyWith => __$$FetchingStudentFailedImplCopyWithImpl<
+          _$FetchingStudentFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingStudents,
+    required TResult Function(Failure failure) fetchingStudentsFailed,
+    required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
+  }) {
+    return fetchingStudentFailed(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingStudents,
+    TResult? Function(Failure failure)? fetchingStudentsFailed,
+    TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudentFailed?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingStudents,
+    TResult Function(Failure failure)? fetchingStudentsFailed,
+    TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudentFailed != null) {
+      return fetchingStudentFailed(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingStudents value) fetchingStudents,
+    required TResult Function(FetchingStudentsFailed value)
+        fetchingStudentsFailed,
+    required TResult Function(FetchingStudentsSuccess value)
+        fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
+  }) {
+    return fetchingStudentFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingStudents value)? fetchingStudents,
+    TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudentFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingStudents value)? fetchingStudents,
+    TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudentFailed != null) {
+      return fetchingStudentFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingStudentFailed implements StudentState {
+  const factory FetchingStudentFailed(final Failure failure) =
+      _$FetchingStudentFailedImpl;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FetchingStudentFailedImplCopyWith<_$FetchingStudentFailedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchingStudentSuccessImplCopyWith<$Res> {
+  factory _$$FetchingStudentSuccessImplCopyWith(
+          _$FetchingStudentSuccessImpl value,
+          $Res Function(_$FetchingStudentSuccessImpl) then) =
+      __$$FetchingStudentSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Student studetn});
+
+  $StudentCopyWith<$Res> get studetn;
+}
+
+/// @nodoc
+class __$$FetchingStudentSuccessImplCopyWithImpl<$Res>
+    extends _$StudentStateCopyWithImpl<$Res, _$FetchingStudentSuccessImpl>
+    implements _$$FetchingStudentSuccessImplCopyWith<$Res> {
+  __$$FetchingStudentSuccessImplCopyWithImpl(
+      _$FetchingStudentSuccessImpl _value,
+      $Res Function(_$FetchingStudentSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? studetn = null,
+  }) {
+    return _then(_$FetchingStudentSuccessImpl(
+      null == studetn
+          ? _value.studetn
+          : studetn // ignore: cast_nullable_to_non_nullable
+              as Student,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StudentCopyWith<$Res> get studetn {
+    return $StudentCopyWith<$Res>(_value.studetn, (value) {
+      return _then(_value.copyWith(studetn: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$FetchingStudentSuccessImpl implements FetchingStudentSuccess {
+  const _$FetchingStudentSuccessImpl(this.studetn);
+
+  @override
+  final Student studetn;
+
+  @override
+  String toString() {
+    return 'StudentState.fetchingStudentSuccess(studetn: $studetn)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchingStudentSuccessImpl &&
+            (identical(other.studetn, studetn) || other.studetn == studetn));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, studetn);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchingStudentSuccessImplCopyWith<_$FetchingStudentSuccessImpl>
+      get copyWith => __$$FetchingStudentSuccessImplCopyWithImpl<
+          _$FetchingStudentSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingStudents,
+    required TResult Function(Failure failure) fetchingStudentsFailed,
+    required TResult Function(List<Student> sutdents) fetchingStudentsSuccess,
+    required TResult Function() fetchingStudent,
+    required TResult Function(Failure failure) fetchingStudentFailed,
+    required TResult Function(Student studetn) fetchingStudentSuccess,
+  }) {
+    return fetchingStudentSuccess(studetn);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingStudents,
+    TResult? Function(Failure failure)? fetchingStudentsFailed,
+    TResult? Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult? Function()? fetchingStudent,
+    TResult? Function(Failure failure)? fetchingStudentFailed,
+    TResult? Function(Student studetn)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudentSuccess?.call(studetn);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingStudents,
+    TResult Function(Failure failure)? fetchingStudentsFailed,
+    TResult Function(List<Student> sutdents)? fetchingStudentsSuccess,
+    TResult Function()? fetchingStudent,
+    TResult Function(Failure failure)? fetchingStudentFailed,
+    TResult Function(Student studetn)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudentSuccess != null) {
+      return fetchingStudentSuccess(studetn);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingStudents value) fetchingStudents,
+    required TResult Function(FetchingStudentsFailed value)
+        fetchingStudentsFailed,
+    required TResult Function(FetchingStudentsSuccess value)
+        fetchingStudentsSuccess,
+    required TResult Function(FetchingStudent value) fetchingStudent,
+    required TResult Function(FetchingStudentFailed value)
+        fetchingStudentFailed,
+    required TResult Function(FetchingStudentSuccess value)
+        fetchingStudentSuccess,
+  }) {
+    return fetchingStudentSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingStudents value)? fetchingStudents,
+    TResult? Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult? Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult? Function(FetchingStudent value)? fetchingStudent,
+    TResult? Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult? Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+  }) {
+    return fetchingStudentSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingStudents value)? fetchingStudents,
+    TResult Function(FetchingStudentsFailed value)? fetchingStudentsFailed,
+    TResult Function(FetchingStudentsSuccess value)? fetchingStudentsSuccess,
+    TResult Function(FetchingStudent value)? fetchingStudent,
+    TResult Function(FetchingStudentFailed value)? fetchingStudentFailed,
+    TResult Function(FetchingStudentSuccess value)? fetchingStudentSuccess,
+    required TResult orElse(),
+  }) {
+    if (fetchingStudentSuccess != null) {
+      return fetchingStudentSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingStudentSuccess implements StudentState {
+  const factory FetchingStudentSuccess(final Student studetn) =
+      _$FetchingStudentSuccessImpl;
+
+  Student get studetn;
+  @JsonKey(ignore: true)
+  _$$FetchingStudentSuccessImplCopyWith<_$FetchingStudentSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

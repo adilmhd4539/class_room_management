@@ -7,4 +7,9 @@ class StudentState with _$StudentState {
       FetchingStudentsFailed;
   const factory StudentState.fetchingStudentsSuccess(List<Student> sutdents) =
       FetchingStudentsSuccess;
+  const factory StudentState.fetchingStudent() = FetchingStudent;
+  const factory StudentState.fetchingStudentFailed(Failure failure) =
+      FetchingStudentFailed;
+  const factory StudentState.fetchingStudentSuccess(Student studetn) =
+      FetchingStudentSuccess;
 }

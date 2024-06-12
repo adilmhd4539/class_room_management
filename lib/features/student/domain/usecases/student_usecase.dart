@@ -10,4 +10,8 @@ class StudentUsecase {
   Future<Either<Failure, List<Student>>> getStudents() async {
     return await _repository.getStudents();
   }
+
+  Future<Either<Failure, Student>> getStudent({required int id}) async {
+    return await _repository.getSudent(id: id);
+  }
 }
