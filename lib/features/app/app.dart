@@ -1,18 +1,28 @@
 import 'package:class_room_mangement/core/handlers/di/service_locator.dart';
 import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
+import 'package:class_room_mangement/features/student/domain/usecases/student_usecase.dart';
+import 'package:class_room_mangement/features/student/presentation/bloc/student_bloc.dart';
 import 'package:class_room_mangement/resources/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
   final AppRouter _appRouter = serviceLocator<AppRouter>();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      theme: AppTheme.getThemeData(),
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser:
-          _appRouter.defaultRouteParser(includePrefixMatches: true),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => StudentBloc(serviceLocator<StudentUsecase>()),
+        )
+      ],
+      child: MaterialApp.router(
+        theme: AppTheme.getThemeData(),
+        routerDelegate: _appRouter.delegate(),
+        routeInformationParser:
+            _appRouter.defaultRouteParser(includePrefixMatches: true),
+      ),
     );
   }
 }

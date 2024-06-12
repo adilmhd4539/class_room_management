@@ -20,12 +20,18 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: const HomeView(),
       );
-    }
+    },
+    StudentsListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const StudentsListView(),
+      );
+    },
   };
 }
 
 /// generated route for
-/// [HomeRoute]
+/// [HomeView]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
       : super(
@@ -34,6 +40,20 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [StudentsListView]
+class StudentsListRoute extends PageRouteInfo<void> {
+  const StudentsListRoute({List<PageRouteInfo>? children})
+      : super(
+          StudentsListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'StudentsListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -1,4 +1,5 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
 import 'package:class_room_mangement/features/home/presentations/views/widgets/home_appbar.dart';
 import 'package:class_room_mangement/resources/app_colors.dart';
 import 'package:class_room_mangement/resources/asset_constants.dart';
@@ -39,7 +40,9 @@ class _HomeViewState extends State<HomeView> {
                     padding: const EdgeInsets.all(16),
                     children: [
                       _buildListTile(
-                          title: 'Students', bgColor: AppColors.lightGreen),
+                          title: 'Students',
+                          bgColor: AppColors.lightGreen,
+                          onTap: _handleOnStudentsTap),
                       const SizedBox(
                         height: 40,
                       ),
@@ -92,6 +95,7 @@ class _HomeViewState extends State<HomeView> {
       children: [
         _buildGridTile(
             title: 'Students',
+            onTap: _handleOnStudentsTap,
             assetPath: AssetConstants.studentIcon,
             bgColor: AppColors.lightGreen),
         _buildGridTile(
@@ -136,5 +140,9 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
     );
+  }
+
+  void _handleOnStudentsTap() {
+    context.router.push(const StudentsListRoute());
   }
 }
