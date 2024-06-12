@@ -20,4 +20,14 @@ class SubjectRepositoryImpl implements SubjectRepository {
       return Left(e is Failure ? e : UnknownFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, Subject>> getSubject({required int id}) async {
+    try {
+      final response = await _dataSource.getSubject(id: id);
+      return Right(Subject.fromModel(response));
+    } catch (e) {
+      return Left(e is Failure ? e : UnknownFailure());
+    }
+  }
 }

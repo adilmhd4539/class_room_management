@@ -10,4 +10,8 @@ class SubjectUsecase {
   Future<Either<Failure, List<Subject>>> getSubjects() async {
     return await _repository.getSubjects();
   }
+
+  Future<Either<Failure, Subject>> getSubject({required int id}) async {
+    return await _repository.getSubject(id: id);
+  }
 }

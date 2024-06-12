@@ -7,4 +7,9 @@ class SubjectState with _$SubjectState {
       FetchingSujectsFailed;
   const factory SubjectState.fetchingSubjectsSuccess(List<Subject> subjects) =
       FetchingSubjectsSuccess;
+  const factory SubjectState.fetchingSubject() = FetchingSubject;
+  const factory SubjectState.fetchingSubjectFailed(Failure failure) =
+      FetchingSubjectFailed;
+  const factory SubjectState.fetchingSubjectSucess(Subject subject) =
+      FetchingSubjectSuccess;
 }

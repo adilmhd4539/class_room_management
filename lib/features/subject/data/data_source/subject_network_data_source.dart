@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 
 abstract class SubjectNetworkDataSource {
   Future<List<SubjectModel>> getSubjects();
+  Future<SubjectModel> getSubject({required int id});
 }
 
 class SubjectNetworkDataSourceImpl extends BaseDataSource
@@ -20,6 +21,21 @@ class SubjectNetworkDataSourceImpl extends BaseDataSource
       if (response.statusCode == 200) {
         List<dynamic> responseData = jsonDecode(response.body)["subjects"];
         return responseData.map((e) => SubjectModel.fromJson(e)).toList();
+      } else {
+        throw UnknownFailure(message: response.reasonPhrase);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<SubjectModel> getSubject({required int id}) async {
+    try {
+      final http.Response response =
+          await api.get(url: '${EnvConfig.subjectsEndPoint}/$id');
+      if (response.statusCode == 200) {
+        return SubjectModel.fromJson(jsonDecode(response.body));
       } else {
         throw UnknownFailure(message: response.reasonPhrase);
       }

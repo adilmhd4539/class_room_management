@@ -12,5 +12,9 @@ void main() {
       final result = await dataSource.getSubjects();
       expect(result, isA<List<SubjectModel>>());
     });
+    test('get subject', () async {
+      final result = await dataSource.getSubject(id: 1);
+      expect(result, isA<SubjectModel>());
+    });
   });
 }

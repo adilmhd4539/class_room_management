@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
 import 'package:class_room_mangement/features/subject/domain/entites/subject_entity.dart';
 import 'package:class_room_mangement/features/subject/presentations/bloc/subject_bloc.dart';
 import 'package:class_room_mangement/resources/extensions/app_extensions.dart';
@@ -108,5 +109,7 @@ class _SubjectListingViewState extends State<SubjectListingView> {
         ),
       );
 
-  _handleOnSubjectTap({required id}) {}
+  _handleOnSubjectTap({required id}) {
+    context.pushRoute(SubjectDatailRoute(id: id));
+  }
 }

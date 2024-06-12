@@ -15,6 +15,7 @@ class SubjectBloc extends Bloc<SubjectEvent, SubjectState> {
   final SubjectUsecase _subjectUsecase;
   SubjectBloc(this._subjectUsecase) : super(const FetchingSubjects()) {
     on<FetchSubjects>(_handleOnFetchSubjects);
+    on<FetchSubject>(_handleOnFetchSubject);
   }
 
   FutureOr<void> _handleOnFetchSubjects(
@@ -25,5 +26,13 @@ class SubjectBloc extends Bloc<SubjectEvent, SubjectState> {
       (failure) => emit(FetchingSujectsFailed(failure)),
       (subjects) => emit(FetchingSubjectsSuccess(subjects)),
     );
+  }
+
+  FutureOr<void> _handleOnFetchSubject(
+      FetchSubject event, Emitter<SubjectState> emit) async {
+    emit(const FetchingSubject());
+    final response = await _subjectUsecase.getSubject(id: event.id);
+    response.fold((failure) => emit(FetchingSubjectFailed(failure)),
+        (subject) => emit(FetchingSubjectSuccess(subject)));
   }
 }

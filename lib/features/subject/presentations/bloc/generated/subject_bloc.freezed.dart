@@ -19,32 +19,38 @@ mixin _$SubjectEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchSubjects,
+    required TResult Function(int id) fetchSubject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchSubjects,
+    TResult? Function(int id)? fetchSubject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchSubjects,
+    TResult Function(int id)? fetchSubject,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchSubjects value) fetchSubjects,
+    required TResult Function(FetchSubject value) fetchSubject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchSubjects value)? fetchSubjects,
+    TResult? Function(FetchSubject value)? fetchSubject,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchSubjects value)? fetchSubjects,
+    TResult Function(FetchSubject value)? fetchSubject,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchSubjects,
+    required TResult Function(int id) fetchSubject,
   }) {
     return fetchSubjects();
   }
@@ -115,6 +122,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchSubjects,
+    TResult? Function(int id)? fetchSubject,
   }) {
     return fetchSubjects?.call();
   }
@@ -123,6 +131,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchSubjects,
+    TResult Function(int id)? fetchSubject,
     required TResult orElse(),
   }) {
     if (fetchSubjects != null) {
@@ -135,6 +144,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(FetchSubjects value) fetchSubjects,
+    required TResult Function(FetchSubject value) fetchSubject,
   }) {
     return fetchSubjects(this);
   }
@@ -143,6 +153,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(FetchSubjects value)? fetchSubjects,
+    TResult? Function(FetchSubject value)? fetchSubject,
   }) {
     return fetchSubjects?.call(this);
   }
@@ -151,6 +162,7 @@ class _$FetchSubjectsImpl implements FetchSubjects {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(FetchSubjects value)? fetchSubjects,
+    TResult Function(FetchSubject value)? fetchSubject,
     required TResult orElse(),
   }) {
     if (fetchSubjects != null) {
@@ -165,12 +177,148 @@ abstract class FetchSubjects implements SubjectEvent {
 }
 
 /// @nodoc
+abstract class _$$FetchSubjectImplCopyWith<$Res> {
+  factory _$$FetchSubjectImplCopyWith(
+          _$FetchSubjectImpl value, $Res Function(_$FetchSubjectImpl) then) =
+      __$$FetchSubjectImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$FetchSubjectImplCopyWithImpl<$Res>
+    extends _$SubjectEventCopyWithImpl<$Res, _$FetchSubjectImpl>
+    implements _$$FetchSubjectImplCopyWith<$Res> {
+  __$$FetchSubjectImplCopyWithImpl(
+      _$FetchSubjectImpl _value, $Res Function(_$FetchSubjectImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$FetchSubjectImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchSubjectImpl implements FetchSubject {
+  const _$FetchSubjectImpl({required this.id});
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'SubjectEvent.fetchSubject(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchSubjectImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchSubjectImplCopyWith<_$FetchSubjectImpl> get copyWith =>
+      __$$FetchSubjectImplCopyWithImpl<_$FetchSubjectImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchSubjects,
+    required TResult Function(int id) fetchSubject,
+  }) {
+    return fetchSubject(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchSubjects,
+    TResult? Function(int id)? fetchSubject,
+  }) {
+    return fetchSubject?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchSubjects,
+    TResult Function(int id)? fetchSubject,
+    required TResult orElse(),
+  }) {
+    if (fetchSubject != null) {
+      return fetchSubject(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchSubjects value) fetchSubjects,
+    required TResult Function(FetchSubject value) fetchSubject,
+  }) {
+    return fetchSubject(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchSubjects value)? fetchSubjects,
+    TResult? Function(FetchSubject value)? fetchSubject,
+  }) {
+    return fetchSubject?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchSubjects value)? fetchSubjects,
+    TResult Function(FetchSubject value)? fetchSubject,
+    required TResult orElse(),
+  }) {
+    if (fetchSubject != null) {
+      return fetchSubject(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchSubject implements SubjectEvent {
+  const factory FetchSubject({required final int id}) = _$FetchSubjectImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$FetchSubjectImplCopyWith<_$FetchSubjectImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SubjectState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchingSubjects,
     required TResult Function(Failure failure) fetchingSujectsFailed,
     required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -178,6 +326,9 @@ mixin _$SubjectState {
     TResult? Function()? fetchingSubjects,
     TResult? Function(Failure failure)? fetchingSujectsFailed,
     TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -185,6 +336,9 @@ mixin _$SubjectState {
     TResult Function()? fetchingSubjects,
     TResult Function(Failure failure)? fetchingSujectsFailed,
     TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -195,6 +349,11 @@ mixin _$SubjectState {
         fetchingSujectsFailed,
     required TResult Function(FetchingSubjectsSuccess value)
         fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -202,6 +361,9 @@ mixin _$SubjectState {
     TResult? Function(FetchingSubjects value)? fetchingSubjects,
     TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -209,6 +371,9 @@ mixin _$SubjectState {
     TResult Function(FetchingSubjects value)? fetchingSubjects,
     TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -273,6 +438,9 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
     required TResult Function() fetchingSubjects,
     required TResult Function(Failure failure) fetchingSujectsFailed,
     required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
   }) {
     return fetchingSubjects();
   }
@@ -283,6 +451,9 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
     TResult? Function()? fetchingSubjects,
     TResult? Function(Failure failure)? fetchingSujectsFailed,
     TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
   }) {
     return fetchingSubjects?.call();
   }
@@ -293,6 +464,9 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
     TResult Function()? fetchingSubjects,
     TResult Function(Failure failure)? fetchingSujectsFailed,
     TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSubjects != null) {
@@ -309,6 +483,11 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
         fetchingSujectsFailed,
     required TResult Function(FetchingSubjectsSuccess value)
         fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
   }) {
     return fetchingSubjects(this);
   }
@@ -319,6 +498,9 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
     TResult? Function(FetchingSubjects value)? fetchingSubjects,
     TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
   }) {
     return fetchingSubjects?.call(this);
   }
@@ -329,6 +511,9 @@ class _$FetchingSubjectsImpl implements FetchingSubjects {
     TResult Function(FetchingSubjects value)? fetchingSubjects,
     TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSubjects != null) {
@@ -411,6 +596,9 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
     required TResult Function() fetchingSubjects,
     required TResult Function(Failure failure) fetchingSujectsFailed,
     required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
   }) {
     return fetchingSujectsFailed(failure);
   }
@@ -421,6 +609,9 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
     TResult? Function()? fetchingSubjects,
     TResult? Function(Failure failure)? fetchingSujectsFailed,
     TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
   }) {
     return fetchingSujectsFailed?.call(failure);
   }
@@ -431,6 +622,9 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
     TResult Function()? fetchingSubjects,
     TResult Function(Failure failure)? fetchingSujectsFailed,
     TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSujectsFailed != null) {
@@ -447,6 +641,11 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
         fetchingSujectsFailed,
     required TResult Function(FetchingSubjectsSuccess value)
         fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
   }) {
     return fetchingSujectsFailed(this);
   }
@@ -457,6 +656,9 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
     TResult? Function(FetchingSubjects value)? fetchingSubjects,
     TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
   }) {
     return fetchingSujectsFailed?.call(this);
   }
@@ -467,6 +669,9 @@ class _$FetchingSujectsFailedImpl implements FetchingSujectsFailed {
     TResult Function(FetchingSubjects value)? fetchingSubjects,
     TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSujectsFailed != null) {
@@ -563,6 +768,9 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
     required TResult Function() fetchingSubjects,
     required TResult Function(Failure failure) fetchingSujectsFailed,
     required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
   }) {
     return fetchingSubjectsSuccess(subjects);
   }
@@ -573,6 +781,9 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
     TResult? Function()? fetchingSubjects,
     TResult? Function(Failure failure)? fetchingSujectsFailed,
     TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
   }) {
     return fetchingSubjectsSuccess?.call(subjects);
   }
@@ -583,6 +794,9 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
     TResult Function()? fetchingSubjects,
     TResult Function(Failure failure)? fetchingSujectsFailed,
     TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSubjectsSuccess != null) {
@@ -599,6 +813,11 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
         fetchingSujectsFailed,
     required TResult Function(FetchingSubjectsSuccess value)
         fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
   }) {
     return fetchingSubjectsSuccess(this);
   }
@@ -609,6 +828,9 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
     TResult? Function(FetchingSubjects value)? fetchingSubjects,
     TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
   }) {
     return fetchingSubjectsSuccess?.call(this);
   }
@@ -619,6 +841,9 @@ class _$FetchingSubjectsSuccessImpl implements FetchingSubjectsSuccess {
     TResult Function(FetchingSubjects value)? fetchingSubjects,
     TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
     TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
     required TResult orElse(),
   }) {
     if (fetchingSubjectsSuccess != null) {
@@ -635,5 +860,474 @@ abstract class FetchingSubjectsSuccess implements SubjectState {
   List<Subject> get subjects;
   @JsonKey(ignore: true)
   _$$FetchingSubjectsSuccessImplCopyWith<_$FetchingSubjectsSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchingSubjectImplCopyWith<$Res> {
+  factory _$$FetchingSubjectImplCopyWith(_$FetchingSubjectImpl value,
+          $Res Function(_$FetchingSubjectImpl) then) =
+      __$$FetchingSubjectImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FetchingSubjectImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$FetchingSubjectImpl>
+    implements _$$FetchingSubjectImplCopyWith<$Res> {
+  __$$FetchingSubjectImplCopyWithImpl(
+      _$FetchingSubjectImpl _value, $Res Function(_$FetchingSubjectImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FetchingSubjectImpl implements FetchingSubject {
+  const _$FetchingSubjectImpl();
+
+  @override
+  String toString() {
+    return 'SubjectState.fetchingSubject()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FetchingSubjectImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingSubjects,
+    required TResult Function(Failure failure) fetchingSujectsFailed,
+    required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
+  }) {
+    return fetchingSubject();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingSubjects,
+    TResult? Function(Failure failure)? fetchingSujectsFailed,
+    TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubject?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingSubjects,
+    TResult Function(Failure failure)? fetchingSujectsFailed,
+    TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubject != null) {
+      return fetchingSubject();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingSubjects value) fetchingSubjects,
+    required TResult Function(FetchingSujectsFailed value)
+        fetchingSujectsFailed,
+    required TResult Function(FetchingSubjectsSuccess value)
+        fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
+  }) {
+    return fetchingSubject(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingSubjects value)? fetchingSubjects,
+    TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubject?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingSubjects value)? fetchingSubjects,
+    TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubject != null) {
+      return fetchingSubject(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingSubject implements SubjectState {
+  const factory FetchingSubject() = _$FetchingSubjectImpl;
+}
+
+/// @nodoc
+abstract class _$$FetchingSubjectFailedImplCopyWith<$Res> {
+  factory _$$FetchingSubjectFailedImplCopyWith(
+          _$FetchingSubjectFailedImpl value,
+          $Res Function(_$FetchingSubjectFailedImpl) then) =
+      __$$FetchingSubjectFailedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$FetchingSubjectFailedImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$FetchingSubjectFailedImpl>
+    implements _$$FetchingSubjectFailedImplCopyWith<$Res> {
+  __$$FetchingSubjectFailedImplCopyWithImpl(_$FetchingSubjectFailedImpl _value,
+      $Res Function(_$FetchingSubjectFailedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FetchingSubjectFailedImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchingSubjectFailedImpl implements FetchingSubjectFailed {
+  const _$FetchingSubjectFailedImpl(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'SubjectState.fetchingSubjectFailed(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchingSubjectFailedImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchingSubjectFailedImplCopyWith<_$FetchingSubjectFailedImpl>
+      get copyWith => __$$FetchingSubjectFailedImplCopyWithImpl<
+          _$FetchingSubjectFailedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingSubjects,
+    required TResult Function(Failure failure) fetchingSujectsFailed,
+    required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectFailed(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingSubjects,
+    TResult? Function(Failure failure)? fetchingSujectsFailed,
+    TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectFailed?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingSubjects,
+    TResult Function(Failure failure)? fetchingSujectsFailed,
+    TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubjectFailed != null) {
+      return fetchingSubjectFailed(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingSubjects value) fetchingSubjects,
+    required TResult Function(FetchingSujectsFailed value)
+        fetchingSujectsFailed,
+    required TResult Function(FetchingSubjectsSuccess value)
+        fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingSubjects value)? fetchingSubjects,
+    TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectFailed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingSubjects value)? fetchingSubjects,
+    TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubjectFailed != null) {
+      return fetchingSubjectFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingSubjectFailed implements SubjectState {
+  const factory FetchingSubjectFailed(final Failure failure) =
+      _$FetchingSubjectFailedImpl;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FetchingSubjectFailedImplCopyWith<_$FetchingSubjectFailedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchingSubjectSuccessImplCopyWith<$Res> {
+  factory _$$FetchingSubjectSuccessImplCopyWith(
+          _$FetchingSubjectSuccessImpl value,
+          $Res Function(_$FetchingSubjectSuccessImpl) then) =
+      __$$FetchingSubjectSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Subject subject});
+
+  $SubjectCopyWith<$Res> get subject;
+}
+
+/// @nodoc
+class __$$FetchingSubjectSuccessImplCopyWithImpl<$Res>
+    extends _$SubjectStateCopyWithImpl<$Res, _$FetchingSubjectSuccessImpl>
+    implements _$$FetchingSubjectSuccessImplCopyWith<$Res> {
+  __$$FetchingSubjectSuccessImplCopyWithImpl(
+      _$FetchingSubjectSuccessImpl _value,
+      $Res Function(_$FetchingSubjectSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subject = null,
+  }) {
+    return _then(_$FetchingSubjectSuccessImpl(
+      null == subject
+          ? _value.subject
+          : subject // ignore: cast_nullable_to_non_nullable
+              as Subject,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SubjectCopyWith<$Res> get subject {
+    return $SubjectCopyWith<$Res>(_value.subject, (value) {
+      return _then(_value.copyWith(subject: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$FetchingSubjectSuccessImpl implements FetchingSubjectSuccess {
+  const _$FetchingSubjectSuccessImpl(this.subject);
+
+  @override
+  final Subject subject;
+
+  @override
+  String toString() {
+    return 'SubjectState.fetchingSubjectSucess(subject: $subject)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchingSubjectSuccessImpl &&
+            (identical(other.subject, subject) || other.subject == subject));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, subject);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchingSubjectSuccessImplCopyWith<_$FetchingSubjectSuccessImpl>
+      get copyWith => __$$FetchingSubjectSuccessImplCopyWithImpl<
+          _$FetchingSubjectSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchingSubjects,
+    required TResult Function(Failure failure) fetchingSujectsFailed,
+    required TResult Function(List<Subject> subjects) fetchingSubjectsSuccess,
+    required TResult Function() fetchingSubject,
+    required TResult Function(Failure failure) fetchingSubjectFailed,
+    required TResult Function(Subject subject) fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectSucess(subject);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchingSubjects,
+    TResult? Function(Failure failure)? fetchingSujectsFailed,
+    TResult? Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult? Function()? fetchingSubject,
+    TResult? Function(Failure failure)? fetchingSubjectFailed,
+    TResult? Function(Subject subject)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectSucess?.call(subject);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchingSubjects,
+    TResult Function(Failure failure)? fetchingSujectsFailed,
+    TResult Function(List<Subject> subjects)? fetchingSubjectsSuccess,
+    TResult Function()? fetchingSubject,
+    TResult Function(Failure failure)? fetchingSubjectFailed,
+    TResult Function(Subject subject)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubjectSucess != null) {
+      return fetchingSubjectSucess(subject);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FetchingSubjects value) fetchingSubjects,
+    required TResult Function(FetchingSujectsFailed value)
+        fetchingSujectsFailed,
+    required TResult Function(FetchingSubjectsSuccess value)
+        fetchingSubjectsSuccess,
+    required TResult Function(FetchingSubject value) fetchingSubject,
+    required TResult Function(FetchingSubjectFailed value)
+        fetchingSubjectFailed,
+    required TResult Function(FetchingSubjectSuccess value)
+        fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectSucess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(FetchingSubjects value)? fetchingSubjects,
+    TResult? Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult? Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult? Function(FetchingSubject value)? fetchingSubject,
+    TResult? Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult? Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+  }) {
+    return fetchingSubjectSucess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FetchingSubjects value)? fetchingSubjects,
+    TResult Function(FetchingSujectsFailed value)? fetchingSujectsFailed,
+    TResult Function(FetchingSubjectsSuccess value)? fetchingSubjectsSuccess,
+    TResult Function(FetchingSubject value)? fetchingSubject,
+    TResult Function(FetchingSubjectFailed value)? fetchingSubjectFailed,
+    TResult Function(FetchingSubjectSuccess value)? fetchingSubjectSucess,
+    required TResult orElse(),
+  }) {
+    if (fetchingSubjectSucess != null) {
+      return fetchingSubjectSucess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingSubjectSuccess implements SubjectState {
+  const factory FetchingSubjectSuccess(final Subject subject) =
+      _$FetchingSubjectSuccessImpl;
+
+  Subject get subject;
+  @JsonKey(ignore: true)
+  _$$FetchingSubjectSuccessImplCopyWith<_$FetchingSubjectSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

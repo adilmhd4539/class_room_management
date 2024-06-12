@@ -37,6 +37,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const StudentsListView(),
       );
     },
+    SubjectDatailRoute.name: (routeData) {
+      final args = routeData.argsAs<SubjectDatailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: SubjectDatailView(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
     SubjectListingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -110,6 +120,44 @@ class StudentsListRoute extends PageRouteInfo<void> {
   static const String name = 'StudentsListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SubjectDatailView]
+class SubjectDatailRoute extends PageRouteInfo<SubjectDatailRouteArgs> {
+  SubjectDatailRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          SubjectDatailRoute.name,
+          args: SubjectDatailRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'SubjectDatailRoute';
+
+  static const PageInfo<SubjectDatailRouteArgs> page =
+      PageInfo<SubjectDatailRouteArgs>(name);
+}
+
+class SubjectDatailRouteArgs {
+  const SubjectDatailRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'SubjectDatailRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for
