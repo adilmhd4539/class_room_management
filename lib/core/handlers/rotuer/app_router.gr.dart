@@ -37,6 +37,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const StudentsListView(),
       );
     },
+    SubjectListingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SubjectListingView(),
+      );
+    },
   };
 }
 
@@ -102,6 +108,20 @@ class StudentsListRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'StudentsListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SubjectListingView]
+class SubjectListingRoute extends PageRouteInfo<void> {
+  const SubjectListingRoute({List<PageRouteInfo>? children})
+      : super(
+          SubjectListingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SubjectListingRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
