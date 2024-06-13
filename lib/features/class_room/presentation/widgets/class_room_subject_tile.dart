@@ -113,10 +113,10 @@ class _ClassRoomSubjectTileState extends State<ClassRoomSubjectTile> {
   }
 
   void _addOrChangeSubject() {
-    context.router.push(SubjectListingRoute(onTap: (ctx, idSubject) {
+    context.router.push(SubjectListingRoute(onTap: (ctx, subject) {
       ctx.maybePop();
       context.read<ClassRoomBloc>().add(AddOrUpdateClassRoomSubject(
-          idSubject: idSubject, idClassRoom: widget.idClassroom));
+          idSubject: subject.id, idClassRoom: widget.idClassroom));
     }));
   }
 }

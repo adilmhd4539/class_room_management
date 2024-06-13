@@ -37,6 +37,28 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const HomeView(),
       );
     },
+    NewRegistrationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewRegistrationView(),
+      );
+    },
+    RegistrationDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<RegistrationDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: RegistrationDetailView(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
+    RegistrationsListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const RegistrationsListView(),
+      );
+    },
     StudentDetailRoute.name: (routeData) {
       final args = routeData.argsAs<StudentDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -48,9 +70,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     StudentsListRoute.name: (routeData) {
+      final args = routeData.argsAs<StudentsListRouteArgs>(
+          orElse: () => const StudentsListRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const StudentsListView(),
+        child: StudentsListView(
+          key: args.key,
+          onTap: args.onTap,
+        ),
       );
     },
     SubjectDatailRoute.name: (routeData) {
@@ -144,6 +171,73 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NewRegistrationView]
+class NewRegistrationRoute extends PageRouteInfo<void> {
+  const NewRegistrationRoute({List<PageRouteInfo>? children})
+      : super(
+          NewRegistrationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewRegistrationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [RegistrationDetailView]
+class RegistrationDetailRoute
+    extends PageRouteInfo<RegistrationDetailRouteArgs> {
+  RegistrationDetailRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          RegistrationDetailRoute.name,
+          args: RegistrationDetailRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'RegistrationDetailRoute';
+
+  static const PageInfo<RegistrationDetailRouteArgs> page =
+      PageInfo<RegistrationDetailRouteArgs>(name);
+}
+
+class RegistrationDetailRouteArgs {
+  const RegistrationDetailRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'RegistrationDetailRouteArgs{key: $key, id: $id}';
+  }
+}
+
+/// generated route for
+/// [RegistrationsListView]
+class RegistrationsListRoute extends PageRouteInfo<void> {
+  const RegistrationsListRoute({List<PageRouteInfo>? children})
+      : super(
+          RegistrationsListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RegistrationsListRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [StudentDetailView]
 class StudentDetailRoute extends PageRouteInfo<StudentDetailRouteArgs> {
   StudentDetailRoute({
@@ -183,16 +277,46 @@ class StudentDetailRouteArgs {
 
 /// generated route for
 /// [StudentsListView]
-class StudentsListRoute extends PageRouteInfo<void> {
-  const StudentsListRoute({List<PageRouteInfo>? children})
-      : super(
+class StudentsListRoute extends PageRouteInfo<StudentsListRouteArgs> {
+  StudentsListRoute({
+    Key? key,
+    void Function(
+      BuildContext,
+      Student,
+    )? onTap,
+    List<PageRouteInfo>? children,
+  }) : super(
           StudentsListRoute.name,
+          args: StudentsListRouteArgs(
+            key: key,
+            onTap: onTap,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'StudentsListRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<StudentsListRouteArgs> page =
+      PageInfo<StudentsListRouteArgs>(name);
+}
+
+class StudentsListRouteArgs {
+  const StudentsListRouteArgs({
+    this.key,
+    this.onTap,
+  });
+
+  final Key? key;
+
+  final void Function(
+    BuildContext,
+    Student,
+  )? onTap;
+
+  @override
+  String toString() {
+    return 'StudentsListRouteArgs{key: $key, onTap: $onTap}';
+  }
 }
 
 /// generated route for
@@ -240,7 +364,7 @@ class SubjectListingRoute extends PageRouteInfo<SubjectListingRouteArgs> {
     Key? key,
     void Function(
       BuildContext,
-      int,
+      Subject,
     )? onTap,
     List<PageRouteInfo>? children,
   }) : super(
@@ -268,7 +392,7 @@ class SubjectListingRouteArgs {
 
   final void Function(
     BuildContext,
-    int,
+    Subject,
   )? onTap;
 
   @override

@@ -5,14 +5,13 @@ import 'package:class_room_mangement/resources/app_colors.dart';
 import 'package:class_room_mangement/resources/extensions/app_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../resources/common/widgets/error_tile.dart';
 import '../bloc/student_bloc.dart';
 
 @RoutePage()
 class StudentsListView extends StatefulWidget {
-  const StudentsListView({super.key});
-
+  final void Function(BuildContext context, Student student)? onTap;
+  const StudentsListView({super.key, this.onTap});
   @override
   State<StudentsListView> createState() => _StudentsListViewState();
 }
@@ -52,15 +51,22 @@ class _StudentsListViewState extends State<StudentsListView> {
                         failure: failure,
                         onRetry: _fetchStudents,
                       ),
-                  fetchingStudentsSuccess: (sutdents) => ListView.separated(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(16),
-                      itemBuilder: (context, index) =>
-                          _buildStudentTile(student: sutdents[index]),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 16,
+                  fetchingStudentsSuccess: (sutdents) => sutdents.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No Student Found',
+                            style: context.textTheme.labelSmall,
                           ),
-                      itemCount: sutdents.length));
+                        )
+                      : ListView.separated(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(16),
+                          itemBuilder: (context, index) =>
+                              _buildStudentTile(student: sutdents[index]),
+                          separatorBuilder: (context, index) => const SizedBox(
+                                height: 16,
+                              ),
+                          itemCount: sutdents.length));
             },
           ))
         ],
@@ -69,7 +75,9 @@ class _StudentsListViewState extends State<StudentsListView> {
   }
 
   Widget _buildStudentTile({required Student student}) => InkWell(
-        onTap: () => _handleOnStudentTap(id: student.id),
+        onTap: () => widget.onTap == null
+            ? _handleOnStudentTap(id: student.id)
+            : widget.onTap!(context, student),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           decoration: BoxDecoration(

@@ -52,8 +52,14 @@ class _ClassRoomListingViewState extends State<ClassRoomListingView> {
                         failure: failure,
                         onRetry: _fetchClassRooms,
                       ),
-                  fetchingClassRoomsSuccsess: (classRooms) =>
-                      ListView.separated(
+                  fetchingClassRoomsSuccsess: (classRooms) => classRooms.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No Class Room Found',
+                            style: context.textTheme.labelSmall,
+                          ),
+                        )
+                      : ListView.separated(
                           shrinkWrap: true,
                           padding: const EdgeInsets.all(16),
                           itemBuilder: (context, index) =>
