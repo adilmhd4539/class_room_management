@@ -47,4 +47,24 @@ class ApiAgent {
       throw UnknownFailure();
     }
   }
+
+  Future<http.Response> put({
+    required String url,
+    required Map<String, dynamic> body,
+    Map<String, String>? headers,
+  }) async {
+    Uri uri = Uri.parse(url);
+    uri = uri.replace(queryParameters: {"api_key": apiKey});
+    try {
+      headers = headers ?? {'Content-Type': 'application/json'};
+      return http.put(uri, headers: headers, body: jsonEncode(body));
+    } on TimeoutException {
+      throw TimeOutFailure();
+    } on SocketException {
+      throw NoNetworkFailure();
+    } catch (e, stackTrace) {
+      debugPrintStack(stackTrace: stackTrace);
+      throw UnknownFailure();
+    }
+  }
 }
