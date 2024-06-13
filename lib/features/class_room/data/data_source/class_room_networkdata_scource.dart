@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:class_room_mangement/core/base/base_data_source.dart';
 import 'package:class_room_mangement/features/class_room/data/models/class_room_model.dart';
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../core/config/config.dart';
@@ -55,27 +53,17 @@ class ClassRoomNetworkdataScourceImpl extends BaseDataSource
   Future<ClassRoomModel> addOrUpdateClassRoomSubject(
       {required int idSubject, required int idClassRoom}) async {
     try {
-      var request = http.MultipartRequest(
-          'PATCH',
-          Uri.parse(
-              '${EnvConfig.classRoomsEndPoint}/$idClassRoom?api_key=5A6C2'));
-      request.fields.addAll({'subject': '$idSubject'});
-
-      http.StreamedResponse response = await request.send();
-
+      final response = await api.patch(
+          url: '${EnvConfig.classRoomsEndPoint}/$idClassRoom',
+          body: {"subject": '$idSubject'});
       if (response.statusCode == 200) {
-        final String responseBody = await response.stream.bytesToString();
-        return ClassRoomModel.fromJson(jsonDecode(responseBody));
+        return ClassRoomModel.fromJson(
+            jsonDecode(await response.stream.bytesToString()));
       } else {
         throw UnknownFailure(message: response.reasonPhrase);
       }
-    } on TimeoutException {
-      throw TimeOutFailure();
-    } on SocketException {
-      throw NoNetworkFailure();
-    } catch (e, stackTrace) {
-      debugPrintStack(stackTrace: stackTrace);
-      throw UnknownFailure();
+    } catch (e) {
+      rethrow;
     }
   }
 }

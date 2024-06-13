@@ -28,16 +28,16 @@ class ApiAgent {
     }
   }
 
-  Future<http.Response> post({
+  Future<http.StreamedResponse> post({
     required String url,
-    required Map<String, dynamic> body,
-    Map<String, String>? headers,
+    required Map<String, String> body,
   }) async {
-    url = "$url/?api_key=$apiKey";
+    Uri uri = Uri.parse(url);
+    uri = uri.replace(queryParameters: {"api_key": apiKey});
     try {
-      headers = headers ?? {'Content-Type': 'application/json'};
-      return http.post(Uri.parse(url),
-          headers: headers, body: jsonEncode(body));
+      final request = http.MultipartRequest('POST', uri);
+      request.fields.addAll(body);
+      return await request.send();
     } on TimeoutException {
       throw TimeOutFailure();
     } on SocketException {
@@ -48,16 +48,16 @@ class ApiAgent {
     }
   }
 
-  Future<http.Response> put({
+  Future<http.StreamedResponse> patch({
     required String url,
-    required Map<String, dynamic> body,
-    Map<String, String>? headers,
+    required Map<String, String> body,
   }) async {
     Uri uri = Uri.parse(url);
     uri = uri.replace(queryParameters: {"api_key": apiKey});
     try {
-      headers = headers ?? {'Content-Type': 'application/json'};
-      return http.put(uri, headers: headers, body: jsonEncode(body));
+      final request = http.MultipartRequest('PATCH', uri);
+      request.fields.addAll(body);
+      return await request.send();
     } on TimeoutException {
       throw TimeOutFailure();
     } on SocketException {
