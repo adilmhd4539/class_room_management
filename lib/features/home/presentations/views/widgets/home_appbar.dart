@@ -46,7 +46,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 55);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 60);
 
   void _handleOnChangeHomeView() {
     isGridNotifier.value = !isGridNotifier.value;

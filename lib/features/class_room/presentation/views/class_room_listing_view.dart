@@ -1,27 +1,26 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
-import 'package:class_room_mangement/features/subject/domain/entites/subject_entity.dart';
-import 'package:class_room_mangement/features/subject/presentations/bloc/subject_bloc.dart';
-import 'package:class_room_mangement/resources/extensions/app_extensions.dart';
+import 'package:class_room_mangement/features/class_room/domain/entites/class_room_entity.dart';
+import 'package:class_room_mangement/resources/extensions/app_extensionS.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../resources/app_colors.dart';
 import '../../../../resources/common/widgets/error_tile.dart';
+import '../bloc/class_room_bloc.dart';
 
 @RoutePage()
-class SubjectListingView extends StatefulWidget {
-  final void Function(BuildContext context, int idSubject)? onTap;
-  const SubjectListingView({super.key, this.onTap});
+class ClassRoomListingView extends StatefulWidget {
+  const ClassRoomListingView({super.key});
 
   @override
-  State<SubjectListingView> createState() => _SubjectListingViewState();
+  State<ClassRoomListingView> createState() => _ClassRoomListingViewState();
 }
 
-class _SubjectListingViewState extends State<SubjectListingView> {
+class _ClassRoomListingViewState extends State<ClassRoomListingView> {
   @override
   void initState() {
-    _fetchSubjects();
+    _fetchClassRooms();
     super.initState();
   }
 
@@ -34,34 +33,35 @@ class _SubjectListingViewState extends State<SubjectListingView> {
           const SizedBox(
             height: 15,
           ),
-          Text('Subjects', style: context.textTheme.titleMedium),
+          Text('Class Rooms', style: context.textTheme.titleMedium),
           const SizedBox(
             height: 10,
           ),
           Expanded(
-              child: BlocBuilder<SubjectBloc, SubjectState>(
+              child: BlocBuilder<ClassRoomBloc, ClassRoomState>(
             buildWhen: (previous, current) =>
-                current is FetchingSubjects ||
-                current is FetchingSujectsFailed ||
-                current is FetchingSubjectsSuccess,
+                current is FetchingClassRooms ||
+                current is FetchingClassRoomsFailed ||
+                current is FetchingClassRoomsSuccess,
             builder: (context, state) {
               return state.maybeWhen(
                   orElse: () => const SizedBox(),
-                  fetchingSubjects: () =>
+                  fetchingClassRooms: () =>
                       const Center(child: CircularProgressIndicator()),
-                  fetchingSujectsFailed: (failure) => ErrorTile(
+                  fetchingClassRoomsFailed: (failure) => ErrorTile(
                         failure: failure,
-                        onRetry: _fetchSubjects,
+                        onRetry: _fetchClassRooms,
                       ),
-                  fetchingSubjectsSuccess: (subjects) => ListView.separated(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(16),
-                      itemBuilder: (context, index) =>
-                          _buildSubjectTile(subject: subjects[index]),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 16,
-                          ),
-                      itemCount: subjects.length));
+                  fetchingClassRoomsSuccsess: (classRooms) =>
+                      ListView.separated(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(16),
+                          itemBuilder: (context, index) =>
+                              _buildClassRoomTile(classRoom: classRooms[index]),
+                          separatorBuilder: (context, index) => const SizedBox(
+                                height: 16,
+                              ),
+                          itemCount: classRooms.length));
             },
           ))
         ],
@@ -69,14 +69,12 @@ class _SubjectListingViewState extends State<SubjectListingView> {
     );
   }
 
-  void _fetchSubjects() {
-    context.read<SubjectBloc>().add(const FetchSubjects());
+  void _fetchClassRooms() {
+    context.read<ClassRoomBloc>().add(const FetchClassRooms());
   }
 
-  Widget _buildSubjectTile({required Subject subject}) => InkWell(
-        onTap: () => widget.onTap == null
-            ? _handleOnSubjectTap(id: subject.id)
-            : widget.onTap!(context, subject.id),
+  Widget _buildClassRoomTile({required ClassRoom classRoom}) => InkWell(
+        onTap: () => _handleOnClassRoomTap(id: classRoom.id),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           decoration: BoxDecoration(
@@ -90,11 +88,11 @@ class _SubjectListingViewState extends State<SubjectListingView> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    subject.name,
+                    classRoom.name,
                     style: context.textTheme.labelSmall,
                   ),
                   Text(
-                    subject.teacher,
+                    classRoom.layout.name,
                     style: context.textTheme.bodyMedium,
                   )
                 ],
@@ -103,7 +101,7 @@ class _SubjectListingViewState extends State<SubjectListingView> {
                 width: 10,
               ),
               Text(
-                '${subject.credits}\nCredit',
+                '${classRoom.size}\nSeats',
                 style: context.textTheme.labelSmall,
                 textAlign: TextAlign.center,
               )
@@ -112,7 +110,7 @@ class _SubjectListingViewState extends State<SubjectListingView> {
         ),
       );
 
-  _handleOnSubjectTap({required id}) {
-    context.pushRoute(SubjectDatailRoute(id: id));
+  _handleOnClassRoomTap({required int id}) {
+    context.router.push(ClassRoomDetailRoute(id: id));
   }
 }

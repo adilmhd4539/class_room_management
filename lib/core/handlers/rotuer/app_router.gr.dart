@@ -15,6 +15,22 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    ClassRoomDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ClassRoomDetailRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ClassRoomDetailView(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
+    ClassRoomListingRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const ClassRoomListingView(),
+      );
+    },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -48,12 +64,69 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SubjectListingRoute.name: (routeData) {
+      final args = routeData.argsAs<SubjectListingRouteArgs>(
+          orElse: () => const SubjectListingRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SubjectListingView(),
+        child: SubjectListingView(
+          key: args.key,
+          onTap: args.onTap,
+        ),
       );
     },
   };
+}
+
+/// generated route for
+/// [ClassRoomDetailView]
+class ClassRoomDetailRoute extends PageRouteInfo<ClassRoomDetailRouteArgs> {
+  ClassRoomDetailRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ClassRoomDetailRoute.name,
+          args: ClassRoomDetailRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ClassRoomDetailRoute';
+
+  static const PageInfo<ClassRoomDetailRouteArgs> page =
+      PageInfo<ClassRoomDetailRouteArgs>(name);
+}
+
+class ClassRoomDetailRouteArgs {
+  const ClassRoomDetailRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'ClassRoomDetailRouteArgs{key: $key, id: $id}';
+  }
+}
+
+/// generated route for
+/// [ClassRoomListingView]
+class ClassRoomListingRoute extends PageRouteInfo<void> {
+  const ClassRoomListingRoute({List<PageRouteInfo>? children})
+      : super(
+          ClassRoomListingRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ClassRoomListingRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -162,14 +235,44 @@ class SubjectDatailRouteArgs {
 
 /// generated route for
 /// [SubjectListingView]
-class SubjectListingRoute extends PageRouteInfo<void> {
-  const SubjectListingRoute({List<PageRouteInfo>? children})
-      : super(
+class SubjectListingRoute extends PageRouteInfo<SubjectListingRouteArgs> {
+  SubjectListingRoute({
+    Key? key,
+    void Function(
+      BuildContext,
+      int,
+    )? onTap,
+    List<PageRouteInfo>? children,
+  }) : super(
           SubjectListingRoute.name,
+          args: SubjectListingRouteArgs(
+            key: key,
+            onTap: onTap,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SubjectListingRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SubjectListingRouteArgs> page =
+      PageInfo<SubjectListingRouteArgs>(name);
+}
+
+class SubjectListingRouteArgs {
+  const SubjectListingRouteArgs({
+    this.key,
+    this.onTap,
+  });
+
+  final Key? key;
+
+  final void Function(
+    BuildContext,
+    int,
+  )? onTap;
+
+  @override
+  String toString() {
+    return 'SubjectListingRouteArgs{key: $key, onTap: $onTap}';
+  }
 }

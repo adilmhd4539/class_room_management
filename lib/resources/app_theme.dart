@@ -10,6 +10,18 @@ class AppTheme {
   }
 
   static ThemeData getThemeData() {
+    ElevatedButtonThemeData elevatedButtonTheme = ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.lightGreen,
+            foregroundColor: AppColors.darkGreen,
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            elevation: 0,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            )));
     TextTheme textTheme = const TextTheme(
         bodyMedium: TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
         labelMedium: TextStyle(
@@ -44,6 +56,7 @@ class AppTheme {
     );
     final ThemeData themeData = ThemeData(
       primaryColor: AppColors.primary,
+      elevatedButtonTheme: elevatedButtonTheme,
       textTheme: textTheme,
       appBarTheme: appBarTheme,
       fontFamily: 'SF Pro Text',

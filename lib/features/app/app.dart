@@ -1,5 +1,7 @@
 import 'package:class_room_mangement/core/handlers/di/service_locator.dart';
 import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
+import 'package:class_room_mangement/features/class_room/domain/usecases/class_room_usecase.dart';
+import 'package:class_room_mangement/features/class_room/presentation/bloc/class_room_bloc.dart';
 import 'package:class_room_mangement/features/student/domain/usecases/student_usecase.dart';
 import 'package:class_room_mangement/features/student/presentation/bloc/student_bloc.dart';
 import 'package:class_room_mangement/features/subject/domain/usecases/subject_usecase.dart';
@@ -20,6 +22,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SubjectBloc(serviceLocator<SubjectUsecase>()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              ClassRoomBloc(serviceLocator<ClassRoomUsecase>(), _appRouter),
         )
       ],
       child: MaterialApp.router(

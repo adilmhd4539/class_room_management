@@ -1,4 +1,7 @@
 import 'package:class_room_mangement/core/handlers/rotuer/app_router.dart';
+import 'package:class_room_mangement/features/class_room/data/data_source/class_room_networkdata_scource.dart';
+import 'package:class_room_mangement/features/class_room/data/repository/class_room_repository_impl.dart';
+import 'package:class_room_mangement/features/class_room/domain/usecases/class_room_usecase.dart';
 import 'package:class_room_mangement/features/student/data/data_source/student_network_data_source.dart';
 import 'package:class_room_mangement/features/student/data/respository/student_repository_impl.dart';
 import 'package:class_room_mangement/features/student/domain/repository/student_repository.dart';
@@ -8,6 +11,8 @@ import 'package:class_room_mangement/features/subject/data/repository/subject_re
 import 'package:class_room_mangement/features/subject/domain/repository/subject_repository.dart';
 import 'package:class_room_mangement/features/subject/domain/usecases/subject_usecase.dart';
 import 'package:get_it/get_it.dart';
+
+import '../../../features/class_room/domain/repository/class_room_repository.dart';
 
 final serviceLocator = GetIt.instance;
 void setUpServiceLocator() {
@@ -24,4 +29,10 @@ void setUpServiceLocator() {
       dataSource: serviceLocator<SubjectNetworkDataSource>()));
   serviceLocator.registerSingleton<SubjectUsecase>(
       SubjectUsecase(repository: serviceLocator<SubjectRepository>()));
+  serviceLocator.registerSingleton<ClassRoomNetworkDataScource>(
+      ClassRoomNetworkdataScourceImpl());
+  serviceLocator.registerSingleton<ClassRoomRepository>(ClassRoomRepositoryImpl(
+      dataSource: serviceLocator<ClassRoomNetworkDataScource>()));
+  serviceLocator.registerSingleton<ClassRoomUsecase>(
+      ClassRoomUsecase(serviceLocator<ClassRoomRepository>()));
 }
