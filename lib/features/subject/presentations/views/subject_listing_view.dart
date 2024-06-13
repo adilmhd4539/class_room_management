@@ -11,7 +11,7 @@ import '../../../../resources/common/widgets/error_tile.dart';
 
 @RoutePage()
 class SubjectListingView extends StatefulWidget {
-  final void Function(BuildContext context, int idSubject)? onTap;
+  final void Function(BuildContext context, Subject idSubject)? onTap;
   const SubjectListingView({super.key, this.onTap});
 
   @override
@@ -53,15 +53,22 @@ class _SubjectListingViewState extends State<SubjectListingView> {
                         failure: failure,
                         onRetry: _fetchSubjects,
                       ),
-                  fetchingSubjectsSuccess: (subjects) => ListView.separated(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.all(16),
-                      itemBuilder: (context, index) =>
-                          _buildSubjectTile(subject: subjects[index]),
-                      separatorBuilder: (context, index) => const SizedBox(
-                            height: 16,
+                  fetchingSubjectsSuccess: (subjects) => subjects.isEmpty
+                      ? Center(
+                          child: Text(
+                            'No Subject Found',
+                            style: context.textTheme.labelSmall,
                           ),
-                      itemCount: subjects.length));
+                        )
+                      : ListView.separated(
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.all(16),
+                          itemBuilder: (context, index) =>
+                              _buildSubjectTile(subject: subjects[index]),
+                          separatorBuilder: (context, index) => const SizedBox(
+                                height: 16,
+                              ),
+                          itemCount: subjects.length));
             },
           ))
         ],
@@ -76,7 +83,7 @@ class _SubjectListingViewState extends State<SubjectListingView> {
   Widget _buildSubjectTile({required Subject subject}) => InkWell(
         onTap: () => widget.onTap == null
             ? _handleOnSubjectTap(id: subject.id)
-            : widget.onTap!(context, subject.id),
+            : widget.onTap!(context, subject),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 13),
           decoration: BoxDecoration(

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -37,7 +36,8 @@ class ApiAgent {
     try {
       final request = http.MultipartRequest('POST', uri);
       request.fields.addAll(body);
-      return await request.send();
+      final respone = await request.send();
+      return respone;
     } on TimeoutException {
       throw TimeOutFailure();
     } on SocketException {
@@ -58,6 +58,24 @@ class ApiAgent {
       final request = http.MultipartRequest('PATCH', uri);
       request.fields.addAll(body);
       return await request.send();
+    } on TimeoutException {
+      throw TimeOutFailure();
+    } on SocketException {
+      throw NoNetworkFailure();
+    } catch (e, stackTrace) {
+      debugPrintStack(stackTrace: stackTrace);
+      throw UnknownFailure();
+    }
+  }
+
+  Future<http.Response> delete({
+    required String url,
+  }) async {
+    Uri uri = Uri.parse(url);
+    uri = uri.replace(queryParameters: {"api_key": apiKey});
+    try {
+      final headers = {'Content-Type': 'application/json'};
+      return http.delete(uri, headers: headers);
     } on TimeoutException {
       throw TimeOutFailure();
     } on SocketException {
